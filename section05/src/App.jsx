@@ -1,24 +1,21 @@
 import './App.css'
-import Button from "./Components/Button.jsx";
-import Header from "./Components/Header.jsx";
+import {useState} from "react";
 
-const buttonProps = {
-    text: "메일",
-    color: "red",
-    a: 1,
-    b: 2,
-    c: 3,
-}
-
-// 부모 컴포넌트
 function App() {
-    return (
-        <>
-            <Button {...buttonProps}/>
-            <Button text={"카페"}/>
-            <Button text={"블로그"}><Header /></Button>
-        </>
-    )
+    const [count, setCount] = useState(0);
+    const [light, setLight] = useState("OFF");
+    return (<>
+            <div>
+                <h1>{light}</h1>
+                <button onClick={() => setLight(light === "ON" ? "OFF" : "ON")}>
+                    {light === "ON" ? "끄기" : "켜기"}
+                </button>
+            </div>
+            <div>
+                <h1>{count}</h1>
+                <button onClick={() => setCount(count + 1)}>+</button>
+            </div>
+        </>)
 }
 
 export default App
