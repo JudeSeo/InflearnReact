@@ -5,6 +5,7 @@ import {useRef, useState} from "react";
 // 2. 생년월일
 // 3. 국적
 // 4. 자기소개
+let count = 0;
 const Register = () => {
     const [input, setInput] = useState({
         name: "",
