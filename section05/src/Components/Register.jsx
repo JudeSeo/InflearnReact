@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 
 // 회원가입 폼
 // 1. 이름
@@ -12,8 +12,12 @@ const Register = () => {
         country: "",
         bio: "",
     })
-
+    const countRef = useRef(0);
+    const inputRef = useRef();
     const onChange = (e) => {
+        // countRef.current++;
+        count++;
+        console.log(count)
         console.log(e.target.name, e.target.value);
         setInput({
             ...input,
@@ -21,10 +25,18 @@ const Register = () => {
         })
     }
 
+    const onSubmit = () => {
+        if (input.name === "") {
+            //이름 입력하는 DOM요소에 포커스
+            inputRef.current.focus();
+        }
+    }
+
     return (
         <div>
+
             <div>
-                <input name={"name"} onChange={onChange} value={input.name} placeholder={"이름"}/>
+                <input ref={inputRef} name={"name"} onChange={onChange} value={input.name} placeholder={"이름"}/>
             </div>
             <div>
                 <input name={"birth"} type={"date"} onChange={onChange} value={input.birth}/>
@@ -40,6 +52,7 @@ const Register = () => {
             <div>
                 <textarea name={"bio"} onChange={onChange} value={input.bio}/>
             </div>
+            <button onClick={onSubmit}>제출</button>
         </div>
     )
 }
