@@ -25,7 +25,6 @@ function App() {
     });
 
     // 3. 언마운트: 죽음
-
     const onClickButton = (value) => {
         setCount(count + value);
     }
