@@ -26,7 +26,7 @@ const mockData = [
 ]
 
 function reducer(state, action) {
-    switch (state.type) {
+    switch (action.type) {
         case "CREATE" :
             return [action.data, ...state];
         case "UPDATE" :
